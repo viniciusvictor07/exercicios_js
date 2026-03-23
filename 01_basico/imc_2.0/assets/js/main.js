@@ -1,4 +1,6 @@
 function meuEscopo() {
+  // FUNÇÕES
+
   // função categorizar o resultado do IMC
   function getNivelImc(imc) {
     const nivel = [
@@ -22,10 +24,30 @@ function meuEscopo() {
     const imc = peso / (altura * altura);
     return imc;
   }
-  // atribuir o formulário e o resultado a variáveis
+  // função criar elemento p
+  function criaP() {
+    const p = document.createElement('p');
+    return p;
+  }
+  // função criar mensagem de validação
+  function setResultado(msg, isValid) {
+    const resultado = document.querySelector('#resultado');
+    resultado.innerHTML = '';
+
+    const p = criaP();
+    if (isValid) {
+      p.classList.add('paragrafo-resultado');
+    } else {
+      p.classList.add('bad');
+    }
+    p.innerHTML = msg;
+    resultado.appendChild(p);
+  }
+
+  // PROGRAMA PRINCIPAL
+
+  // atribuir o formulário e adicionar um ouvinte de evento para o envio do formulário
   const formulario = document.getElementById('formulario');
-  const resultado = document.getElementById('resultado');
-  // adicionar um ouvinte de evento para o envio do formulário
   formulario.addEventListener('submit', function (event) {
     event.preventDefault();
     // obter os valores dos campos de entrada
@@ -36,11 +58,11 @@ function meuEscopo() {
     let altura = Number(inputAltura.value.replace(',', '.'));
     // validar os valores de peso e altura
     if (!peso) {
-      resultado.innerHTML = 'Peso inválido';
+      setResultado('Peso inválido', false);
       return;
     }
     if (!altura) {
-      resultado.innerHTML = 'Altura inválida';
+      setResultado('Altura inválida', false);
       return;
     }
     // ajustar a altura para metros, caso seja informada em centímetros
@@ -52,8 +74,10 @@ function meuEscopo() {
     // chamar a função getNivelImc
     const nivelImc = getNivelImc(imc);
     //   exibir resultado
-    resultado.innerHTML = `Seu IMC é ${imc.toFixed(2)}, sua categoria é: ${nivelImc}`;
-    formulario.reset();
+    setResultado(
+      `Seu IMC é ${imc.toFixed(2)}, sua categoria é: ${nivelImc}`,
+      true,
+    );
   });
 }
 meuEscopo();

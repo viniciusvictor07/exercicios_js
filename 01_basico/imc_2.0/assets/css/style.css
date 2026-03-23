@@ -82,3 +82,14 @@ th {
   font-weight: bold;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.paragrafo-resultado {
+  background: #2bb99a;
+  border-radius: 5px;
+}
+
+.bad {
+  background: #c82020;
+  padding: 10px;
+  border-radius: 5px;
+}
