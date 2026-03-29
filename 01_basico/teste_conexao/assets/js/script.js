@@ -1,14 +1,11 @@
-// Atribuir
+// Atribuir elementos ao DOM
 const botaoReset = document.getElementById('meuBotaoReset');
 const botao = document.getElementById('meuBotao');
 const titulo = document.querySelector('h1');
 
-// O Título e o Botão 1 precisam de um espaço fixo entre eles
-titulo.style.marginBottom = '10px';
-
-// O Botão de Reset vira o "Fantasma Centralizado"
+// Ocultar o botaoReset
 botaoReset.style.position = 'absolute';
-botaoReset.style.top = '70%';
+botaoReset.style.top = '65%';
 botaoReset.style.left = '50%';
 botaoReset.style.transform = 'translate(-50%, -50%)';
 botaoReset.style.display = 'none';
@@ -18,7 +15,7 @@ botao.addEventListener('click', function () {
   // adicionar botão de reset
   botaoReset.style.display = 'block';
 
-  // Muda a cor do fundo para um verde "sucesso"
+  // Muda a cor do fundo
   document.body.style.backgroundColor = '#000000';
 
   // Muda o texto do botão
@@ -45,7 +42,7 @@ botaoReset.addEventListener('click', function () {
   // Muda a cor do fundo
   document.body.style.backgroundColor = '#ffffff';
 
-  // Muda a cor e titulo
+  // Muda a cor e nome do titulo
   titulo.innerText = 'Teste de Conexão JS';
   titulo.style.color = '#000000';
 
